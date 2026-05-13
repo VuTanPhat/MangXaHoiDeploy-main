@@ -9,14 +9,19 @@ const connectDB = async () => {
       console.log("Database error:", err.message)
     );
 
-    await mongoose.connect(`${process.env.MONGODB_URI}/pingup`, {
+    const mongoUri = process.env.MONGODB_URI?.trim();
+    if (!mongoUri) {
+      throw new Error("MONGODB_URI environment variable is not set");
+    }
+
+    await mongoose.connect(`${mongoUri}/pingup`, {
       serverSelectionTimeoutMS: 30000,
       socketTimeoutMS: 45000,
       maxPoolSize: 10,
     });
   } catch (error) {
     console.log("MongoDB connection error:", error.message);
-    process.exit(1);
+    throw error;
   }
 };
 
