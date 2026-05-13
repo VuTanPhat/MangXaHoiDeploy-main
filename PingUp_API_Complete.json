@@ -1,0 +1,959 @@
+{
+  "info": {
+    "name": "PingUp API - Complete Collection",
+    "description": "Test tất cả API của PingUp Social Network & Project Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:4000/api"
+    },
+    {
+      "key": "token",
+      "value": "PASTE_TOKEN_TU_CONSOLE_VAO_DAY"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "1. USER",
+      "item": [
+        {
+          "name": "1.1 Get My Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/user/data",
+              "host": ["{{base_url}}"],
+              "path": ["user", "data"]
+            }
+          }
+        },
+        {
+          "name": "1.2 Discover Users",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"search\": \"\"\n}" },
+            "url": {
+              "raw": "{{base_url}}/user/discover",
+              "host": ["{{base_url}}"],
+              "path": ["user", "discover"]
+            }
+          }
+        },
+        {
+          "name": "1.3 Follow User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"followId\": \"USER_ID_HERE\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/user/follow",
+              "host": ["{{base_url}}"],
+              "path": ["user", "follow"]
+            }
+          }
+        },
+        {
+          "name": "1.4 Unfollow User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unfollowId\": \"USER_ID_HERE\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/user/unfollow",
+              "host": ["{{base_url}}"],
+              "path": ["user", "unfollow"]
+            }
+          }
+        },
+        {
+          "name": "1.5 Send Connection Request",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"receiverId\": \"USER_ID_HERE\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/user/connect",
+              "host": ["{{base_url}}"],
+              "path": ["user", "connect"]
+            }
+          }
+        },
+        {
+          "name": "1.6 Accept Connection",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectionId\": \"CONNECTION_ID_HERE\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/user/accept",
+              "host": ["{{base_url}}"],
+              "path": ["user", "accept"]
+            }
+          }
+        },
+        {
+          "name": "1.7 Get My Connections",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/user/connections",
+              "host": ["{{base_url}}"],
+              "path": ["user", "connections"]
+            }
+          }
+        },
+        {
+          "name": "1.8 Get Recent Messages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/user/recent-messages",
+              "host": ["{{base_url}}"],
+              "path": ["user", "recent-messages"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. POST",
+      "item": [
+        {
+          "name": "2.1 Get Feed",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/post/feed",
+              "host": ["{{base_url}}"],
+              "path": ["post", "feed"]
+            }
+          }
+        },
+        {
+          "name": "2.2 Create Post (text only)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "content",
+                  "value": "Hello from Postman! 🚀",
+                  "type": "text"
+                },
+                { "key": "post_type", "value": "text", "type": "text" }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/post/add",
+              "host": ["{{base_url}}"],
+              "path": ["post", "add"]
+            }
+          }
+        },
+        {
+          "name": "2.2b Create Post (with images)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "content",
+                  "value": "Post with images!",
+                  "type": "text"
+                },
+                {
+                  "key": "post_type",
+                  "value": "text_with_image",
+                  "type": "text"
+                },
+                { "key": "images", "type": "file", "src": [] }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/post/add",
+              "host": ["{{base_url}}"],
+              "path": ["post", "add"]
+            }
+          }
+        },
+        {
+          "name": "2.3 Like Post",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"postId\": \"POST_ID_HERE\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/post/like",
+              "host": ["{{base_url}}"],
+              "path": ["post", "like"]
+            }
+          }
+        },
+        {
+          "name": "2.4 Add Comment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"postId\": \"POST_ID_HERE\",\n  \"content\": \"Comment from Postman!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/post/comment",
+              "host": ["{{base_url}}"],
+              "path": ["post", "comment"]
+            }
+          }
+        },
+        {
+          "name": "2.5 Get Comments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/post/comments/POST_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["post", "comments", "POST_ID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "2.6 Share Post",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"postId\": \"POST_ID_HERE\",\n  \"content\": \"Sharing this!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/post/share",
+              "host": ["{{base_url}}"],
+              "path": ["post", "share"]
+            }
+          }
+        },
+        {
+          "name": "2.7 Update Post",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Updated content!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/post/POST_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["post", "POST_ID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "2.8 Delete Post",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/post/POST_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["post", "POST_ID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "2.9 Delete Comment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/post/comment/COMMENT_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["post", "comment", "COMMENT_ID_HERE"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. STORY",
+      "item": [
+        {
+          "name": "3.1 Get Stories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/story/get",
+              "host": ["{{base_url}}"],
+              "path": ["story", "get"]
+            }
+          }
+        },
+        {
+          "name": "3.2 Create Story (text)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "content", "value": "My story text!", "type": "text" },
+                { "key": "media_type", "value": "text", "type": "text" },
+                {
+                  "key": "background_color",
+                  "value": "#4f46e5",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/story/create",
+              "host": ["{{base_url}}"],
+              "path": ["story", "create"]
+            }
+          }
+        },
+        {
+          "name": "3.3 Delete Story",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/story/STORY_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["story", "STORY_ID_HERE"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. MESSAGE",
+      "item": [
+        {
+          "name": "4.1 Send Message",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "to_user_id",
+                  "value": "RECEIVER_USER_ID",
+                  "type": "text"
+                },
+                {
+                  "key": "text",
+                  "value": "Hello from Postman!",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/message/send",
+              "host": ["{{base_url}}"],
+              "path": ["message", "send"]
+            }
+          }
+        },
+        {
+          "name": "4.2 Get Chat Messages",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to_user_id\": \"OTHER_USER_ID\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/message/get",
+              "host": ["{{base_url}}"],
+              "path": ["message", "get"]
+            }
+          }
+        },
+        {
+          "name": "4.3 Delete Message",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/message/delete/MESSAGE_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["message", "delete", "MESSAGE_ID_HERE"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. GROUP",
+      "item": [
+        {
+          "name": "5.1 Create Group",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test Group\",\n  \"member_ids\": [\"USER_ID_1\", \"USER_ID_2\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/group/create",
+              "host": ["{{base_url}}"],
+              "path": ["group", "create"]
+            }
+          }
+        },
+        {
+          "name": "5.2 Get My Groups",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/group/my",
+              "host": ["{{base_url}}"],
+              "path": ["group", "my"]
+            }
+          }
+        },
+        {
+          "name": "5.3 Get Group Messages",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group_id\": \"GROUP_ID_HERE\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/group/messages",
+              "host": ["{{base_url}}"],
+              "path": ["group", "messages"]
+            }
+          }
+        },
+        {
+          "name": "5.4 Send Group Message",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "group_id", "value": "GROUP_ID_HERE", "type": "text" },
+                { "key": "text", "value": "Hello group!", "type": "text" }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/group/send",
+              "host": ["{{base_url}}"],
+              "path": ["group", "send"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. PROJECT",
+      "item": [
+        {
+          "name": "6.1 Create Project",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test Project\",\n  \"key\": \"TEST\",\n  \"description\": \"Project description\",\n  \"methodology\": \"scrum\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/project/create",
+              "host": ["{{base_url}}"],
+              "path": ["project", "create"]
+            }
+          }
+        },
+        {
+          "name": "6.2 Get My Projects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/project/my",
+              "host": ["{{base_url}}"],
+              "path": ["project", "my"]
+            }
+          }
+        },
+        {
+          "name": "6.3 Get Project Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/project/PROJECT_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["project", "PROJECT_ID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "6.4 Update Project",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Project Name\",\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/project/PROJECT_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["project", "PROJECT_ID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "6.5 Add Member",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"USER_ID_TO_ADD\",\n  \"role\": \"member\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/project/PROJECT_ID_HERE/member",
+              "host": ["{{base_url}}"],
+              "path": ["project", "PROJECT_ID_HERE", "member"]
+            }
+          }
+        },
+        {
+          "name": "6.6 Remove Member",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/project/PROJECT_ID_HERE/member/MEMBER_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["project", "PROJECT_ID_HERE", "member", "MEMBER_ID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "6.7 Delete Project",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/project/PROJECT_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["project", "PROJECT_ID_HERE"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. TASK",
+      "item": [
+        {
+          "name": "7.1 Create Task",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"project\": \"PROJECT_ID_HERE\",\n  \"title\": \"Test Task\",\n  \"description\": \"Task description\",\n  \"type\": \"task\",\n  \"priority\": \"medium\",\n  \"story_points\": 3,\n  \"estimated_hours\": 4\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/task/create",
+              "host": ["{{base_url}}"],
+              "path": ["task", "create"]
+            }
+          }
+        },
+        {
+          "name": "7.2 Get Project Tasks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/task/project/PROJECT_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["task", "project", "PROJECT_ID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "7.3 Get Task Detail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/task/TASK_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["task", "TASK_ID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "7.4 Update Task",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Task Title\",\n  \"description\": \"Updated description\",\n  \"priority\": \"high\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/task/TASK_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["task", "TASK_ID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "7.5 Update Task Status",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"in_progress\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/task/TASK_ID_HERE/status",
+              "host": ["{{base_url}}"],
+              "path": ["task", "TASK_ID_HERE", "status"]
+            }
+          }
+        },
+        {
+          "name": "7.6 Log Time",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hours\": 2.5,\n  \"description\": \"Worked on task\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/task/TASK_ID_HERE/time-log",
+              "host": ["{{base_url}}"],
+              "path": ["task", "TASK_ID_HERE", "time-log"]
+            }
+          }
+        },
+        {
+          "name": "7.7 Get Time Logs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/task/TASK_ID_HERE/time-logs",
+              "host": ["{{base_url}}"],
+              "path": ["task", "TASK_ID_HERE", "time-logs"]
+            }
+          }
+        },
+        {
+          "name": "7.8 Create Handover",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to_user\": \"NEW_USER_ID\",\n  \"reason\": \"workloadBalancing\",\n  \"context\": \"Need help with this task\",\n  \"completed_work\": \"API done\",\n  \"pending_work\": \"UI needed\",\n  \"blockers\": \"None\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/task/TASK_ID_HERE/handover",
+              "host": ["{{base_url}}"],
+              "path": ["task", "TASK_ID_HERE", "handover"]
+            }
+          }
+        },
+        {
+          "name": "7.9 Get My Handovers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/task/handovers/my",
+              "host": ["{{base_url}}"],
+              "path": ["task", "handovers", "my"]
+            }
+          }
+        },
+        {
+          "name": "7.10 Accept Handover",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/task/handover/HANDOVER_ID/accept",
+              "host": ["{{base_url}}"],
+              "path": ["task", "handover", "HANDOVER_ID", "accept"]
+            }
+          }
+        },
+        {
+          "name": "7.11 Reject Handover",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"Too busy\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/task/handover/HANDOVER_ID/reject",
+              "host": ["{{base_url}}"],
+              "path": ["task", "handover", "HANDOVER_ID", "reject"]
+            }
+          }
+        },
+        {
+          "name": "7.12 Delete Task",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/task/TASK_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["task", "TASK_ID_HERE"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "8. AI CHAT",
+      "item": [
+        {
+          "name": "8.1 Chat with AI",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Xin chào! Agile là gì?\",\n  \"conversationId\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ai/chat",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "chat"]
+            }
+          }
+        },
+        {
+          "name": "8.2 Get Conversations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/ai/conversations",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "conversations"]
+            }
+          }
+        },
+        {
+          "name": "8.3 Get Conversation Detail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/ai/conversation/CONVERSATION_ID",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "conversation", "CONVERSATION_ID"]
+            }
+          }
+        },
+        {
+          "name": "8.4 Create Conversation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/ai/conversation",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "conversation"]
+            }
+          }
+        },
+        {
+          "name": "8.5 Rename Conversation",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"New Title\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ai/conversation/CONVERSATION_ID",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "conversation", "CONVERSATION_ID"]
+            }
+          }
+        },
+        {
+          "name": "8.6 Delete Conversation",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/ai/conversation/CONVERSATION_ID",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "conversation", "CONVERSATION_ID"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "9. ADMIN (require admin role)",
+      "item": [
+        {
+          "name": "9.1 Get Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/stats",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "stats"]
+            }
+          }
+        },
+        {
+          "name": "9.2 Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/users?page=1&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "users"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "9.3 Get User Detail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/user/USER_ID",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "user", "USER_ID"]
+            }
+          }
+        },
+        {
+          "name": "9.4 Toggle User Status",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/user/USER_ID/toggle-status",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "user", "USER_ID", "toggle-status"]
+            }
+          }
+        },
+        {
+          "name": "9.5 Change User Role",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"role\": \"admin\"\n}" },
+            "url": {
+              "raw": "{{base_url}}/admin/user/USER_ID/role",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "user", "USER_ID", "role"]
+            }
+          }
+        },
+        {
+          "name": "9.6 Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/user/USER_ID",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "user", "USER_ID"]
+            }
+          }
+        },
+        {
+          "name": "9.7 Get All Posts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/posts?page=1&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "posts"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "9.8 Delete Post (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/post/POST_ID",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "post", "POST_ID"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
