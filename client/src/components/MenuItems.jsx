@@ -20,7 +20,7 @@ const MenuItems = ({ setSidebarOpen }) => {
     { to: "/", labelKey: "home", Icon: Home },
     { to: "/messages", labelKey: "messages", Icon: MessageCircle },
     { to: "/projects", labelKey: "projects", Icon: FolderKanban },
-    { to: "/ai-chat", labelKey: "aiChat", Icon: Bot },
+    //{ to: "/ai-chat", labelKey: "aiChat", Icon: Bot },
     { to: "/connections", labelKey: "connections", Icon: Users },
     { to: "/discover", labelKey: "discover", Icon: Search },
     { to: "/profile", labelKey: "profile", Icon: UserIcon },
