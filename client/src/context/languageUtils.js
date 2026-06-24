@@ -140,7 +140,7 @@ export const translations = {
 
     // Login
     loginTitle: "Kết nối thực sự, không chỉ là bạn bè",
-    loginSubtitle: "Kết nối với cộng đồng toàn cầu trên PingUp.",
+    loginSubtitle: "Kết nối với cộng đồng toàn cầu trên KetNoi.",
     usedByDevelopers: "Được sử dụng bởi 12k+ nhà phát triển",
 
     // Theme
@@ -599,7 +599,7 @@ export const translations = {
 
     // Login
     loginTitle: "More than just friends truly connect",
-    loginSubtitle: "Connect with global community on PingUp.",
+    loginSubtitle: "Connect with global community on KetNoi.",
     usedByDevelopers: "Used by 12k+ developers",
 
     // Theme

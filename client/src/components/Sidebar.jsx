@@ -18,7 +18,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
   return (
     <div
-      className={`w-60 xl:w-72 flex-shrink-0 bg-white dark:bg-slate-900 border-r border-gray-200 dark:border-slate-700 flex flex-col justify-between items-center max-sm:absolute top-0 bottom-0 z-20 ${
+      className={`w-60 xl:w-72 flex-shrink-0 bg-blue-100 dark:bg-slate-500 border-r border-gray-200 dark:border-slate-700 flex flex-col justify-between items-center max-sm:absolute top-0 bottom-0 z-20 ${
         sidebarOpen ? "translate-x-0" : "max-sm:-translate-x-full"
       } transition-all duration-300 ease-in-out`}
     >

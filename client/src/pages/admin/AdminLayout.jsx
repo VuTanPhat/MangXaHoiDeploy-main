@@ -48,7 +48,7 @@ const AdminLayout = () => {
                 Admin Panel
               </h1>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                PingUp Management
+                KetNoi Management
               </p>
             </div>
           </div>
