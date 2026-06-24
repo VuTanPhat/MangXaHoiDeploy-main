@@ -13,20 +13,20 @@ const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return user ? (
-    <div className="w-full flex h-screen">
+    <div className="w-full flex h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
-      <div className="flex-1 bg-slate-50 dark:bg-slate-950 h-full overflow-auto">
+      <div className="flex-1 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900 h-full overflow-auto">
         <Outlet />
       </div>
       {sidebarOpen ? (
         <X
-          className="absolute top-3 right-3 p-2 z-100 bg-white dark:bg-slate-800 rounded-md shadow w-10 h-10 text-gray-600 dark:text-gray-300 sm:hidden"
+          className="absolute top-3 right-3 p-2 z-100 bg-white dark:bg-slate-800 rounded-xl shadow-md w-10 h-10 text-gray-600 dark:text-gray-300 sm:hidden hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
           onClick={() => setSidebarOpen(false)}
         />
       ) : (
         <Menu
-          className="absolute top-3 right-3 p-2 z-100 bg-white dark:bg-slate-800 rounded-md shadow w-10 h-10 text-gray-600 dark:text-gray-300 sm:hidden"
+          className="absolute top-3 right-3 p-2 z-100 bg-white dark:bg-slate-800 rounded-xl shadow-md w-10 h-10 text-gray-600 dark:text-gray-300 sm:hidden hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
           onClick={() => setSidebarOpen(true)}
         />
       )}

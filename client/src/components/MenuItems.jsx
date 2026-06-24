@@ -27,7 +27,7 @@ const MenuItems = ({ setSidebarOpen }) => {
   ];
 
   return (
-    <div className="px-6 text-gray-600 dark:text-slate-300 space-y-1 font-medium">
+    <div className="px-4 text-gray-600 dark:text-slate-300 space-y-2 font-medium">
       {menuItemsData.map(({ to, labelKey, Icon }) => (
         <NavLink
           key={to}
@@ -35,15 +35,15 @@ const MenuItems = ({ setSidebarOpen }) => {
           end={to === "/"}
           onClick={() => setSidebarOpen(false)}
           className={({ isActive }) =>
-            `px-3.5 py-2 flex items-center gap-3 rounded-xl ${
+            `px-4 py-3 flex items-center gap-3 rounded-xl transition-all duration-200 ${
               isActive
-                ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400"
-                : "hover:bg-gray-50 dark:hover:bg-slate-800"
+                ? "bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/40 dark:to-purple-900/40 text-indigo-700 dark:text-indigo-300 shadow-sm"
+                : "text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-800/50 hover:text-gray-900 dark:hover:text-slate-200"
             }`
           }
         >
-          <Icon className="w-5 h-5" />
-          {t(labelKey)}
+          <Icon className="w-5 h-5 flex-shrink-0" />
+          <span className="truncate">{t(labelKey)}</span>
         </NavLink>
       ))}
     </div>

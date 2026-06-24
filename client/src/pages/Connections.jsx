@@ -112,30 +112,30 @@ const Connections = () => {
           {dataArray.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center justify-center gap-1 border h-20 w-40 border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow dark:shadow-slate-900 rounded-md"
+              className="flex flex-col items-center justify-center gap-2 px-6 py-5 border border-blue-100 dark:border-slate-700 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-900 shadow-md dark:shadow-slate-900 rounded-xl hover:shadow-lg transition-all duration-200 w-40"
             >
-              <b className="dark:text-white">{item.value.length}</b>
-              <p className="text-slate-600 dark:text-slate-400">{item.label}</p>
+              <b className="text-2xl text-indigo-600 dark:text-indigo-400">{item.value.length}</b>
+              <p className="text-slate-600 dark:text-slate-400 text-sm font-medium">{item.label}</p>
             </div>
           ))}
         </div>
 
         {/* Tabs */}
-        <div className="inline-flex flex-wrap items-center border border-gray-200 dark:border-slate-700 rounded-md p-1 bg-white dark:bg-slate-800 shadow-sm dark:shadow-slate-900">
+        <div className="inline-flex flex-wrap items-center border border-gray-200 dark:border-slate-700 rounded-xl p-1.5 bg-white dark:bg-slate-800 shadow-md dark:shadow-slate-900">
           {dataArray.map((tab) => (
             <button
               onClick={() => setCurrentTab(tab.key)}
               key={tab.key}
-              className={`cursor-pointer flex items-center px-3 py-1 text-sm rounded-md transition-colors ${
+              className={`cursor-pointer flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
                 currentTab === tab.key
-                  ? "bg-white dark:bg-slate-700 font-medium text-black dark:text-white"
-                  : "text-gray-500 dark:text-slate-400 hover:text-black dark:hover:text-white"
+                  ? "bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md"
+                  : "text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700/50"
               }`}
             >
               <tab.icon className="w-4 h-4" />
-              <span className="ml-1">{tab.label}</span>
+              <span className="ml-2">{tab.label}</span>
               {tab.count !== undefined && (
-                <span className="ml-2 text-xs bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full">
+                <span className="ml-2 text-xs bg-gray-200 dark:bg-slate-600 text-gray-700 dark:text-slate-200 px-2.5 py-1 rounded-full">
                   {tab.count}
                 </span>
               )}
@@ -150,7 +150,7 @@ const Connections = () => {
             .value.map((user) => (
               <div
                 key={user._id}
-                className="w-full max-w-88 flex gap-5 p-6 bg-white dark:bg-slate-800 shadow dark:shadow-slate-900 rounded-md "
+                className="w-full max-w-96 flex gap-5 p-6 bg-white dark:bg-slate-800 shadow-md dark:shadow-slate-900 rounded-xl hover:shadow-lg transition-all duration-200 hover:scale-102 "
               >
                 <img
                   src={user.profile_picture}

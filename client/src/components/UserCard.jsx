@@ -61,17 +61,17 @@ const UserCard = ({ user }) => {
   return (
     <div
       key={user._id}
-      className="p-4 pt-6 flex flex-col justify-between w-72 shadow dark:shadow-slate-900 border border-gray-200 dark:border-slate-700 rounded-md bg-white dark:bg-slate-800"
+      className="p-5 pt-6 flex flex-col justify-between w-72 shadow-md hover:shadow-lg dark:shadow-slate-900 border border-blue-100 dark:border-slate-700 rounded-xl bg-gradient-to-br from-white to-blue-50 dark:from-slate-800 dark:to-slate-900 transition-all duration-200 hover:scale-105"
     >
       <div className="text-center">
         <img
           src={user.profile_picture}
           alt=""
-          className="rounded-full w-16 shadow-md mx-auto"
+          className="rounded-full w-16 shadow-md mx-auto ring-2 ring-indigo-200 dark:ring-indigo-600/30"
         />
-        <p className="mt-4 font-semibold dark:text-white">{user.full_name}</p>
+        <p className="mt-4 font-bold text-lg dark:text-white">{user.full_name}</p>
         {user.username && (
-          <p className="text-gray-500 dark:text-slate-400 font-light">
+          <p className="text-gray-500 dark:text-slate-400 text-sm">
             @{user.username}
           </p>
         )}
@@ -83,11 +83,11 @@ const UserCard = ({ user }) => {
       </div>
 
       <div className="flex items-center justify-center gap-2 mt-4 text-xs text-gray-600 dark:text-slate-400">
-        <div className="flex items-center gap-1 border border-gray-300 dark:border-slate-600 rounded-full px-3 py-1">
-          <MapPin className="w-4 h-4" /> {user.location}
+        <div className="flex items-center gap-1 border border-gray-200 dark:border-slate-600 rounded-full px-3 py-1.5 bg-gray-50 dark:bg-slate-700/30">
+          <MapPin className="w-3.5 h-3.5" /> {user.location}
         </div>
-        <div className="flex items-center gap-1 border border-gray-300 dark:border-slate-600 rounded-full px-3 py-1">
-          <span>{user.followers.length}</span> {t("followers")}
+        <div className="flex items-center gap-1 border border-gray-200 dark:border-slate-600 rounded-full px-3 py-1.5 bg-gray-50 dark:bg-slate-700/30">
+          <span className="font-semibold">{user.followers.length}</span> {t("followers")}
         </div>
       </div>
 

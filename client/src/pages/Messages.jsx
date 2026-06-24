@@ -89,12 +89,12 @@ const Messages = () => {
   };
 
   return (
-    <div className="min-h-screen relative bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen relative bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900">
       {/* POPUP CREATE GROUP */}
       {showCreateGroup && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-slate-800 w-full max-w-lg p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4 dark:text-white">
+          <div className="bg-white dark:bg-slate-800 w-full max-w-lg p-6 rounded-xl shadow-xl">
+            <h2 className="text-2xl font-bold mb-5 dark:text-white">
               {t("createGroup")}
             </h2>
 
@@ -151,10 +151,10 @@ const Messages = () => {
       <div className="max-w-6xl mx-auto p-6">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+            <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
               {t("messages")}
             </h1>
-            <p className="text-slate-600 dark:text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400 text-lg">
               {t("talkToFriends")}
             </p>
           </div>
@@ -162,7 +162,7 @@ const Messages = () => {
           {/* BUTTON OPEN POPUP */}
           <button
             onClick={() => setShowCreateGroup(true)}
-            className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 active:scale-95"
+            className="flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-5 py-3 rounded-lg font-medium shadow-md hover:shadow-lg active:scale-95 transition-all duration-200"
           >
             <Users size={18} />
             {t("createGroup")}
@@ -170,29 +170,25 @@ const Messages = () => {
         </div>
 
         {/* GROUP LIST */}
-        <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-3">
+        <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">
           {t("groups")}
         </h2>
-        <div className="flex flex-col gap-3 mb-8">
+        <div className="flex flex-col gap-4 mb-10">
           {groups.map((group) => (
             <div
               key={group._id}
-              className="max-w-xl flex gap-5 p-6 bg-white dark:bg-slate-800 shadow dark:shadow-slate-900 rounded-md cursor-pointer hover:shadow-lg dark:hover:bg-slate-700 transition"
+              className="max-w-2xl flex gap-5 p-5 bg-white dark:bg-slate-800 shadow-md hover:shadow-lg dark:shadow-slate-900 rounded-xl cursor-pointer hover:scale-102 transition-all duration-200 border border-gray-100 dark:border-slate-700"
               onClick={() => navigate(`/group/${group._id}`)}
             >
-              <img
-                src={
-                  group.avatar ||
-                  "https://cdn-icons-png.flaticon.com/512/711/711245.png"
-                }
-                className="rounded-full size-12"
-              />
+              <div className="flex items-center justify-center size-14 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 shadow-md flex-shrink-0">
+                <Users size={24} className="text-white" />
+              </div>
 
               <div className="flex-1">
-                <p className="font-medium text-slate-700 dark:text-slate-200">
+                <p className="font-bold text-slate-800 dark:text-slate-100">
                   {group.name}
                 </p>
-                <p className="text-slate-500 dark:text-slate-400 text-sm">
+                <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
                   {group.members.length} {t("members")}
                 </p>
               </div>
@@ -200,46 +196,48 @@ const Messages = () => {
           ))}
 
           {groups.length === 0 && (
-            <p className="text-slate-500 dark:text-slate-400 text-sm">
+            <p className="text-slate-500 dark:text-slate-400 text-sm text-center py-4">
               {t("noGroups")}
             </p>
           )}
         </div>
 
         {/* FRIEND LIST */}
-        <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-3">
+        <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">
           {t("friends")}
         </h2>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-4">
           {connections.map((user) => (
             <div
               key={user._id}
-              className="max-w-xl flex gap-5 p-6 bg-white dark:bg-slate-800 shadow dark:shadow-slate-900 rounded-md"
+              className="max-w-2xl flex gap-5 p-5 bg-white dark:bg-slate-800 shadow-md hover:shadow-lg dark:shadow-slate-900 rounded-xl border border-gray-100 dark:border-slate-700 transition-all duration-200 hover:scale-102"
             >
               <img
                 src={user.profile_picture}
-                className="rounded-full size-12"
+                className="rounded-full size-14 shadow-md object-cover"
               />
               <div className="flex-1">
-                <p className="font-medium text-slate-700 dark:text-slate-200">
+                <p className="font-bold text-slate-800 dark:text-slate-100">
                   {user.full_name}
                 </p>
-                <p className="text-slate-500 dark:text-slate-400">
+                <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
                   @{user.username}
                 </p>
               </div>
 
-              <div className="flex flex-col gap-2 mt-4">
+              <div className="flex gap-2 items-center">
                 <button
                   onClick={() => navigate(`/messages/${user._id}`)}
-                  className="size-10 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 dark:text-slate-300"
+                  className="size-11 flex items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-900/30 hover:bg-indigo-200 dark:hover:bg-indigo-900/50 dark:text-indigo-400 text-indigo-600 transition-all hover:shadow-md"
+                  title={t("messages")}
                 >
                   <MessageSquare size={18} />
                 </button>
 
                 <button
                   onClick={() => navigate(`/profile/${user._id}`)}
-                  className="size-10 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 dark:text-slate-300"
+                  className="size-11 flex items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 dark:text-blue-400 text-blue-600 transition-all hover:shadow-md"
+                  title={t("profile")}
                 >
                   <Eye size={18} />
                 </button>

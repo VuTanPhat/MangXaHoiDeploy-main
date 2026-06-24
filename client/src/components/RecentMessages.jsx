@@ -263,14 +263,9 @@ const RecentMessages = () => {
                   }`}
                 >
                   <div className="relative">
-                    <img
-                      src={
-                        message.group.avatar ||
-                        "https://cdn-icons-png.flaticon.com/512/711/711245.png"
-                      }
-                      alt=""
-                      className="w-9 h-9 rounded-full object-cover"
-                    />
+                    <div className="flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex-shrink-0">
+                      <Users className="w-5 h-5 text-white" />
+                    </div>
                     {isUnread ? (
                       <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-red-500 rounded-full border-2 border-white dark:border-slate-800 animate-pulse"></span>
                     ) : (

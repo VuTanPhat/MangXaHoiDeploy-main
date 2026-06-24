@@ -283,10 +283,10 @@ const PostCard = ({ post, onPostShared, onPostDeleted, onPostUpdated }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-xl shadow dark:shadow-slate-900 p-4 space-y-4 w-full max-w-2xl">
+    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg dark:shadow-slate-900 dark:hover:shadow-slate-800 p-5 space-y-4 w-full max-w-2xl transition-all duration-200">
       {/* Shared indicator */}
       {isSharedPost && (
-        <div className="flex items-center gap-2 text-gray-500 dark:text-slate-400 text-xs pb-2 border-b border-gray-200 dark:border-slate-600">
+        <div className="flex items-center gap-2 text-gray-500 dark:text-slate-400 text-xs pb-3 border-b border-gray-100 dark:border-slate-700">
           <Repeat2 className="w-4 h-4" />
           <span>
             {post.user.full_name} {t("sharedAPost")}

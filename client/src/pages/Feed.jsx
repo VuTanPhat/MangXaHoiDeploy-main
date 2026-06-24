@@ -38,11 +38,11 @@ const Feed = () => {
   }, []);
 
   return !loading ? (
-    <div className="h-full overflow-y-scroll no-scrollbar py-10 xl:pr-5 flex items-start justify-center xl:gap-8">
+    <div className="h-full overflow-y-scroll no-scrollbar py-8 xl:py-12 xl:pr-8 flex items-start justify-center xl:gap-8">
       {/* Stories and post list */}
       <div>
         <StoriesBar />
-        <div className="p-4 space-y-6">
+        <div className="p-4 space-y-5 mt-4">
           {feeds.map((post) => (
             <PostCard key={post._id} post={post} />
           ))}
@@ -50,23 +50,25 @@ const Feed = () => {
       </div>
 
       {/* Right Sidebar */}
-      <div className="max-xl:hidden sticky top-0">
-        <div className="max-w-xs bg-white dark:bg-slate-800 text-xs p-4 rounded-md inline-flex flex-col gap-2 shadow dark:shadow-slate-900">
-          <h3 className="text-slate-800 dark:text-slate-200 font-semibold">
+      <div className="max-xl:hidden sticky top-0 h-screen overflow-y-auto no-scrollbar py-8">
+        <div className="max-w-xs bg-white dark:bg-slate-800 text-xs p-5 rounded-xl shadow-md dark:shadow-slate-900 inline-flex flex-col gap-3">
+          <h3 className="text-slate-800 dark:text-slate-200 font-bold text-sm">
             {t("sponsored")}
           </h3>
           <img
             src={assets.sponsored_img}
-            className="w-75 h-50 rounded-md"
+            className="w-75 h-50 rounded-lg object-cover"
             alt=""
           />
-          <p className="text-slate-600 dark:text-slate-300">Email marketing</p>
-          <p className="text-slate-400 dark:text-slate-500">
+          <p className="text-slate-700 dark:text-slate-300 font-medium">Email marketing</p>
+          <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
             Supercharge your marketing with a powerful, easy-to-use platform
             built for results.
           </p>
         </div>
-        <RecentMessages />
+        <div className="mt-6">
+          <RecentMessages />
+        </div>
       </div>
     </div>
   ) : (

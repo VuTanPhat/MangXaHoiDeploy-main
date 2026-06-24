@@ -59,29 +59,29 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950">
-      <div className="max-w-6xl mx-auto p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900">
+      <div className="max-w-3xl mx-auto p-6">
         {/* Title */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-3">
             {t("createPost")}
           </h1>
-          <p className="text-slate-600 dark:text-slate-400">
+          <p className="text-slate-600 dark:text-slate-400 text-lg">
             {t("shareThoughts")}
           </p>
         </div>
 
         {/* Form */}
-        <div className="max-w-xl bg-white dark:bg-slate-800 p-4 sm:p-8 sm:pb-3 rounded-xl shadow-md dark:shadow-slate-900 space-y-4">
+        <div className="max-w-2xl bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-lg dark:shadow-slate-900 space-y-5 border border-blue-100 dark:border-slate-700">
           {/* Header */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <img
               src={user.profile_picture}
               alt=""
-              className="w-12 h-12 rounded-full shadow"
+              className="w-14 h-14 rounded-full shadow-md ring-2 ring-indigo-200 dark:ring-indigo-600/30 object-cover"
             />
             <div>
-              <h2 className="font-semibold dark:text-white">
+              <h2 className="font-bold text-lg dark:text-white">
                 {user.full_name}
               </h2>
               <p className="text-sm text-gray-500 dark:text-slate-400">
@@ -92,7 +92,7 @@ const CreatePost = () => {
 
           {/* Text Area */}
           <textarea
-            className="w-full resize-none max-h-20 mt-4 text-sm outline-none placeholder-gray-400 dark:placeholder-slate-500 bg-transparent dark:text-white"
+            className="w-full resize-none max-h-32 text-base outline-none placeholder-gray-400 dark:placeholder-slate-500 bg-slate-50 dark:bg-slate-700/50 dark:text-white rounded-xl p-4 border-2 border-transparent focus:border-indigo-500 dark:focus:border-indigo-400 transition-colors duration-200"
             placeholder={t("whatsHappening")}
             onChange={(e) => setContent(e.target.value)}
             value={content}
@@ -148,7 +148,7 @@ const CreatePost = () => {
                   error: <p>{t("postNotAdded")}</p>,
                 })
               }
-              className="text-sm bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 active:scale-95 transition text-white font-medium px-8 py-2 rounded-md cursor-pointer"
+              className="text-base bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 active:scale-95 transition-all shadow-md hover:shadow-lg text-white font-bold px-8 py-2.5 rounded-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {t("publishPost")}
             </button>

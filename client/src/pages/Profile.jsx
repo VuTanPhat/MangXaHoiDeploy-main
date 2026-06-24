@@ -54,10 +54,10 @@ const Profile = () => {
   }, [profileId, currentUser]);
 
   return user ? (
-    <div className="relative h-full overflow-y-scroll bg-gray-50 dark:bg-slate-950 p-6">
+    <div className="relative h-full overflow-y-scroll bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900 p-6">
       <div className="max-w-3xl mx-auto">
         {/* Profile Card */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow dark:shadow-slate-900 overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl dark:shadow-slate-900 dark:hover:shadow-slate-800 overflow-hidden transition-all duration-200">
           {/* Cover Photo */}
           <div className="h-40 md:h-56 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900">
             {user.cover_photo && (
@@ -79,15 +79,15 @@ const Profile = () => {
 
         {/* Tabs */}
         <div className="mt-6">
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow dark:shadow-slate-900 p-1 flex max-w-md mx-auto">
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md dark:shadow-slate-900 p-2 flex max-w-md mx-auto">
             {["posts", "shares", "media", "likes"].map((tab) => (
               <button
                 onClick={() => setActiveTab(tab)}
                 key={tab}
-                className={`flex-1 px-4 py-2 text-sm font-medium rounded-lg transition-colors cursor-pointer ${
+                className={`flex-1 px-4 py-2.5 text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
                   activeTab === tab
-                    ? "bg-indigo-600 text-white"
-                    : "text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white"
+                    ? "bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md"
+                    : "text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700/50 hover:text-gray-900 dark:hover:text-white"
                 }`}
               >
                 {t(tab)}
