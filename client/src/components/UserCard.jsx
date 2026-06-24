@@ -106,7 +106,7 @@ const UserCard = ({ user }) => {
         {/* Connection Request Button / Message Button */}
         <button
           onClick={handleConnectionRequest}
-          className="flex items-center justify-center w-16 border dark:border-slate-600 text-slate-500 dark:text-slate-400 group rounded-md cursor-pointer active:scale-95 transition"
+          className="flex items-center justify-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 cursor-pointer active:scale-95 transition"
         >
           {currentUser?.connections.includes(user._id) ? (
             <MessageCircle className="w-5 h-5 group-hover:scale-105 transition" />
