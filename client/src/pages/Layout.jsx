@@ -16,7 +16,7 @@ const Layout = () => {
     <div className="w-full flex h-screen">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
-      <div className="flex-1 bg-slate-50 dark:bg-slate-950 h-full overflow-hidden">
+      <div className="flex-1 bg-slate-50 dark:bg-slate-950 h-full overflow-auto">
         <Outlet />
       </div>
       {sidebarOpen ? (
