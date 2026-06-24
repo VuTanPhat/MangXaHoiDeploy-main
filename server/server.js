@@ -18,9 +18,58 @@ import projectRouter from "./routes/projectRoutes.js";
 import taskRouter from "./routes/taskRoutes.js";
 import sprintRouter from "./routes/sprintRoutes.js";
 import { setupSocketIO } from "./socket/videoCall.js";
+import User from "./models/User.js";
 
 const app = express();
 const httpServer = createServer(app);
+
+const ADMIN_USER_ID = process.env.ADMIN_USER_ID;
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@example.com";
+const ADMIN_FULL_NAME = process.env.ADMIN_FULL_NAME || "Admin User";
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "admin_user";
+
+const ensureAdminAccount = async () => {
+  const existingAdmin = await User.findOne({ role: "admin" });
+  if (existingAdmin) {
+    console.log("✓ Đã tồn tại admin trong database.");
+    return;
+  }
+
+  if (ADMIN_USER_ID) {
+    const user = await User.findById(ADMIN_USER_ID);
+    if (user) {
+      user.role = "admin";
+      user.isActive = true;
+      await user.save();
+      console.log(`✓ Đã cập nhật user ${ADMIN_USER_ID} thành admin.`);
+      return;
+    }
+
+    await User.create({
+      _id: ADMIN_USER_ID,
+      email: ADMIN_EMAIL,
+      full_name: ADMIN_FULL_NAME,
+      username: ADMIN_USERNAME,
+      role: "admin",
+      isActive: true,
+    });
+    console.log(`✓ Đã tạo admin mới với ID ${ADMIN_USER_ID}.`);
+    return;
+  }
+
+  const firstUser = await User.findOne();
+  if (firstUser) {
+    firstUser.role = "admin";
+    firstUser.isActive = true;
+    await firstUser.save();
+    console.log(`✓ Đã gán user ${firstUser._id} làm admin mặc định.`);
+    return;
+  }
+
+  console.log(
+    "⚠️  Chưa có user nào trong database để gán admin. Vui lòng đăng ký một user trước hoặc cấu hình ADMIN_USER_ID."
+  );
+};
 
 let isInitialized = false;
 let initializationError = null;
@@ -46,6 +95,9 @@ async function initializeServer() {
       // Connect to database
       await connectDB();
       console.log("✓ Database connected");
+
+      // Create default admin account if configured
+      await ensureAdminAccount();
 
       // Middleware
       app.use(express.json());

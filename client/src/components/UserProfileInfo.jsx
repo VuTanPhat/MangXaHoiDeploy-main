@@ -9,11 +9,11 @@ const UserProfileInfo = ({ user, posts, profileId, setShowEdit }) => {
   return (
     <div className="relative py-4 px-6 md:px-8 bg-white dark:bg-slate-800">
       <div className="flex flex-col md:flex-row items-start gap-6">
-        <div className="w-32 h-32 border-4 border-white dark:border-slate-800 shadow-lg absolute -top-16 rounded-full">
+        <div className="w-32 h-32 border-4 border-white dark:border-slate-800 shadow-lg absolute -top-16 rounded-full overflow-hidden">
           <img
             src={user.profile_picture}
             alt=""
-            className="absolute rounded-full z-2"
+            className="absolute inset-0 w-full h-full object-cover rounded-full"
           />
         </div>
 

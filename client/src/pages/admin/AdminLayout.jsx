@@ -25,7 +25,7 @@ const AdminLayout = () => {
     { path: "/admin", icon: LayoutDashboard, label: "Dashboard", end: true },
     { path: "/admin/users", icon: Users, label: "Quản lý người dùng" },
     { path: "/admin/posts", icon: FileText, label: "Quản lý bài viết" },
-    { path: "/admin/projects", icon: FolderKanban, label: "Quản lý dự án" },
+    // { path: "/admin/projects", icon: FolderKanban, label: "Quản lý dự án" },
   ];
 
   const handleLogout = () => {
