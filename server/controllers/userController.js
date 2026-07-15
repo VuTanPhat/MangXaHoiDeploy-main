@@ -5,14 +5,16 @@ import Post from "../models/Post.js";
 import User from "../models/User.js";
 import fs from "fs";
 import { clerkClient } from "@clerk/express";
+import { syncClerkUserToDatabase } from "../utils/syncClerkUser.js";
 
 // Get User Data using userId
 export const getUserData = async (req, res) => {
   try {
     const { userId } = req.auth();
-    const user = await User.findById(userId);
+    let user = await User.findById(userId);
     if (!user) {
-      return res.json({ success: false, message: "User not found" });
+      const clerkUser = await clerkClient.users.getUser(userId);
+      user = await syncClerkUserToDatabase(clerkUser);
     }
     res.json({ success: true, user });
   } catch (error) {
